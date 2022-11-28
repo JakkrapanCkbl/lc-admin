@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Livewire\About;
 use App\Http\Livewire\Accordion;
 use App\Http\Livewire\Alerts;
@@ -139,7 +140,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('livewire.index');
+    return view('livewire.landing'); //start at landing page
 });
 
 Route::get('about', About::class);
