@@ -1,1 +1,167 @@
-(()=>{!function(){"use strict";function e(e){if(!e.id)return e.text;var t=$('<span class="status-indicator projects">'+e.text+"</span>"),n=t.text().split(" ").join("").toLowerCase();return"inprogress"===n?t.addClass("in-progress"):"onhold"===n?t.addClass("on-hold"):"completed"===n?t.addClass("completed"):t.addClass("empty"),t}$("#data-table").DataTable({language:{searchPlaceholder:"Search...",sSearch:"",lengthMenu:"_MENU_"}}),$(".select2").select2({minimumResultsForSearch:1/0}),$(".select2-status-search").select2({templateResult:e,templateSelection:e,escapeMarkup:function(e){return e}});var t=$("#task-file-input"),n=t.next("label").find("span"),l=$("i.remove"),r=n.text();t.on("change",(function(e){var a=t.val().split("\\").pop();a?(n.text(a),l.show()):(n.text(r),l.hide())})),l.on("click",(function(e){t.val(""),n.text(r),l.hide()}))}();var e=document.querySelector(".sub-list-container");if(e){var t=function(t){"use strict";e.removeChild(t.target.parentElement)},n=document.querySelector(".sub-list-item"),l=document.querySelector("#addTask"),r=document.querySelector("#subTaskInput"),a=document.querySelector("#errorNote"),s=document.querySelector("#deleteAllTasks"),c=document.querySelector("#completedAll");setTimeout((function(){setInterval((function(){for(var e=document.querySelectorAll(".delete-main"),n=0;n<e.length;n++)e[n].addEventListener("click",t)}),10)}),1);var o=0,i=n.cloneNode(!0);c.addEventListener("click",(function(){"use strict";var t=e.children;if(o%2!=0)for(var n=0;n<t.length;n++)t[n].classList.remove("task-completed");else for(var l=0;l<t.length;l++)t[l].classList.add("task-completed");o++})),s.addEventListener("click",(function(){"use strict";e.innerHTML=" "})),l.addEventListener("click",(function(){a.innerText="";var t=i.cloneNode(!0);t.classList.remove("task-completed");var n=r.value;0!==n.length?(e.appendChild(t),t.children[0].children[1].innerText=n,r.value=""):a.innerText="Please Enter Valid Input"}))}})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**************************************!*\
+  !*** ./resources/assets/js/index.js ***!
+  \**************************************/
+(function () {
+  'use strict'; //______Data-Table
+
+  $('#data-table').DataTable({
+    language: {
+      searchPlaceholder: 'Search...',
+      sSearch: '',
+      lengthMenu: '_MENU_'
+    }
+  }); //______Select2
+
+  $('.select2').select2({
+    minimumResultsForSearch: Infinity
+  }); //select2 with indicator
+
+  function selectStatus(status) {
+    if (!status.id) {
+      return status.text;
+    }
+
+    var $status = $('<span class="status-indicator projects">' + status.text + '</span>');
+    var $statusText = $status.text().split(" ").join("").toLowerCase();
+
+    if ($statusText === "inprogress") {
+      $status.addClass("in-progress");
+    } else if ($statusText === "onhold") {
+      $status.addClass("on-hold");
+    } else if ($statusText === "completed") {
+      $status.addClass("completed");
+    } else {
+      $status.addClass("empty");
+    }
+
+    return $status;
+  }
+
+  ; //upload
+
+  $(".select2-status-search").select2({
+    templateResult: selectStatus,
+    templateSelection: selectStatus,
+    escapeMarkup: function escapeMarkup(s) {
+      return s;
+    }
+  });
+  var $file = $('#task-file-input'),
+      $label = $file.next('label'),
+      $labelText = $label.find('span'),
+      $labelRemove = $('i.remove'),
+      labelDefault = $labelText.text(); // on file change
+
+  $file.on('change', function (event) {
+    var fileName = $file.val().split('\\').pop();
+
+    if (fileName) {
+      $labelText.text(fileName);
+      $labelRemove.show();
+    } else {
+      $labelText.text(labelDefault);
+      $labelRemove.hide();
+    }
+  }); // Remove file
+
+  $labelRemove.on('click', function (event) {
+    $file.val("");
+    $labelText.text(labelDefault);
+    $labelRemove.hide(); // console.log($file)
+  });
+})(); //todo task
+
+
+var subTaskContainer = document.querySelector('.sub-list-container');
+
+if (subTaskContainer) {
+  //delete task
+  var deleteSubTask = function deleteSubTask($e) {
+    'use strict';
+
+    subTaskContainer.removeChild($e.target.parentElement);
+  }; //mark all as completed vice verca
+
+
+  var markAllCompleted = function markAllCompleted() {
+    'use strict';
+
+    var allTasks = subTaskContainer.children;
+
+    if (count % 2 != 0) {
+      for (var i = 0; i < allTasks.length; i++) {
+        allTasks[i].classList.remove('task-completed');
+      }
+    } else {
+      for (var _i = 0; _i < allTasks.length; _i++) {
+        allTasks[_i].classList.add('task-completed');
+      }
+    }
+
+    count++;
+  }; //remove all tasks
+
+
+  var removeAllTasks = function removeAllTasks() {
+    'use strict';
+
+    subTaskContainer.innerHTML = ' ';
+  }; //add new task
+
+
+  var addNewTask = function addNewTask() {
+    errorNote.innerText = "";
+    var newSubTask = taskCopy.cloneNode(true);
+    newSubTask.classList.remove('task-completed');
+    var newTaskText = subTaskInput.value;
+
+    if (newTaskText.length !== 0) {
+      subTaskContainer.appendChild(newSubTask);
+      newSubTask.children[0].children[1].innerText = newTaskText;
+      subTaskInput.value = "";
+    } else {
+      errorNote.innerText = "Please Enter Valid Input";
+    }
+  }; //mark task as completed
+
+
+  var taskCompleted = function taskCompleted($e) {
+    'use strict';
+
+    var currentSubList = $e.target;
+    var subListParent = currentSubList.parentElement.parentElement;
+
+    if (subListParent.classList.contains('task-completed')) {
+      subListParent.classList.remove('task-completed');
+    } else {
+      subListParent.classList.add('task-completed');
+    }
+  };
+
+  var subTaskElement = document.querySelector('.sub-list-item');
+  var addSubTaskBtn = document.querySelector('#addTask');
+  var subTaskInput = document.querySelector('#subTaskInput');
+  var errorNote = document.querySelector('#errorNote');
+  var deleteAllTasks = document.querySelector('#deleteAllTasks');
+  var completedAllBtn = document.querySelector('#completedAll');
+  setTimeout(function () {
+    setInterval(function () {
+      var deleteBtn = document.querySelectorAll('.delete-main');
+
+      for (var i = 0; i < deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener('click', deleteSubTask);
+      }
+    }, 10);
+  }, 1);
+  var count = 0;
+  var taskCopy = subTaskElement.cloneNode(true);
+  completedAllBtn.addEventListener('click', markAllCompleted); // mark all completed
+
+  deleteAllTasks.addEventListener('click', removeAllTasks); //delete all tasks
+
+  addSubTaskBtn.addEventListener('click', addNewTask); //create new task
+}
+/******/ })()
+;

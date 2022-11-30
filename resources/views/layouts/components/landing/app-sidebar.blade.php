@@ -22,16 +22,10 @@
 											<a class="side-menu__item" data-bs-toggle="slide" href="#Features"><span class="side-menu__label">บริการอื่น ๆ</span></a>
 										</li>
 										<li class="slide">
-											<a class="side-menu__item" data-bs-toggle="slide" href="#News"><span class="side-menu__label">ข่าวอสังหาฯ</span></a>
+											<a class="side-menu__item" data-bs-toggle="slide" href="#News"><span class="side-menu__label">News & Insights</span></a>
 										</li>
 										<li class="slide">
-											<a class="side-menu__item" data-bs-toggle="slide" href="#Trends"><span class="side-menu__label">Trends</span></a>
-										</li>
-										<li class="slide">
-											<a class="side-menu__item" data-bs-toggle="slide" href="#Research"><span class="side-menu__label">Research</span></a>
-										</li>
-										<li class="slide">
-											<a class="side-menu__item" data-bs-toggle="slide" href="#Contact"><span class="side-menu__label">Contact Us</span></a>
+											<a class="side-menu__item" data-bs-toggle="slide" href="#Contact"><span class="side-menu__label">ติดต่อ</span></a>
 										</li>
 									</ul>
 									<div class="header-nav-right d-flex">

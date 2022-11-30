@@ -38,7 +38,6 @@
 
 					</div>
 
-                    @include('layouts.components.landing.header-main')
 
 				</div>
 				<!--/APP-SIDEBAR-->

@@ -1,1 +1,70 @@
-(()=>{for(var e=document.querySelectorAll(".star"),t=0;t<e.length;t++)e[t].addEventListener("click",c);function c(e){"use strict";var t=e.target;t.classList.contains("active")?t.classList.remove("active"):t.classList.add("active")}var n=document.querySelector("#typeTitle"),r=document.querySelector("#all"),i=document.querySelector("#onHold"),s=document.querySelector("#inProgress"),o=document.querySelector("#completed");r&&r.addEventListener("click",(function(){"use strict";n.innerHTML="All Projects"})),i&&i.addEventListener("click",(function(){"use strict";n.innerHTML="On Hold"})),s&&s.addEventListener("click",(function(){"use strict";n.innerHTML="In Progress"})),o&&o.addEventListener("click",(function(){"use strict";n.innerHTML="Completed"}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*****************************************!*\
+  !*** ./resources/assets/js/projects.js ***!
+  \*****************************************/
+var stars = document.querySelectorAll('.star');
+
+for (var i = 0; i < stars.length; i++) {
+  stars[i].addEventListener('click', activeStar);
+}
+
+function activeStar($e) {
+  'use strict';
+
+  var currentStar = $e.target;
+
+  if (currentStar.classList.contains('active')) {
+    currentStar.classList.remove('active');
+  } else {
+    currentStar.classList.add('active');
+  }
+}
+
+var typeofProject = document.querySelector('#typeTitle');
+var allBtn = document.querySelector('#all');
+var holdBtn = document.querySelector('#onHold');
+var progressBtn = document.querySelector('#inProgress');
+var completedBtn = document.querySelector('#completed');
+
+if (allBtn) {
+  allBtn.addEventListener('click', writeAll);
+}
+
+function writeAll() {
+  'use strict';
+
+  typeofProject.innerHTML = "All Projects";
+}
+
+if (holdBtn) {
+  holdBtn.addEventListener('click', writeHold);
+}
+
+function writeHold() {
+  'use strict';
+
+  typeofProject.innerHTML = "On Hold";
+}
+
+if (progressBtn) {
+  progressBtn.addEventListener('click', writeProgress);
+}
+
+function writeProgress() {
+  'use strict';
+
+  typeofProject.innerHTML = "In Progress";
+}
+
+if (completedBtn) {
+  completedBtn.addEventListener('click', writeCompleted);
+}
+
+function writeCompleted() {
+  'use strict';
+
+  typeofProject.innerHTML = "Completed";
+}
+/******/ })()
+;
