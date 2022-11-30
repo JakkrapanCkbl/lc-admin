@@ -22155,26 +22155,26 @@ svg {
 }
 
 .background-image-blog.img1 {
-  background-image: url(../../assets/images/photos/blog8.jpg) !important;
-  height: 320px;
+    background-image: url(../../assets/images/blog/2reTF_kbmn8-MQ.jpg) !important;
+    height: 200px;
 }
 
 .background-image-blog.img2 {
-  background-image: url(../../assets/images/photos/blog12.jpg) !important;
+  background-image: url(../../assets/images/blog/test2.png) !important;
   background-position: top !important;
-  height: 308px;
+  height: 200px;
 }
 
 .background-image-blog.img3 {
-  background-image: url(../../assets/images/photos/blog13.jpg) !important;
+  background-image: url(../../assets/images/blog/test3.png) !important;
   background-position: center !important;
-  height: 308px;
+  height: 200px;
 }
 
 .background-image-blog.img4 {
-  background-image: url(../../assets/images/photos/blog-sug5.jpg) !important;
+  background-image: url(../../assets/images/blog/test4.png) !important;
   background-position: center !important;
-  height: 308px;
+  height: 200px;
 }
 
 .custom-blog-content {
