@@ -10,4 +10,6 @@ class Blog extends Component
     {
         return view('livewire.blog');
     }
+
+    //Block Data Mock 
 }

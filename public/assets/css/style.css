@@ -26457,6 +26457,21 @@ img {
   padding-right: 4px;
   padding-left: inherit;
 }
+ /*added for blog to limit text line amount*/
+.landing-page .limit-3-line{
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.landing-page .limit-4-line{
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 body .buy-now {
   position: fixed;
