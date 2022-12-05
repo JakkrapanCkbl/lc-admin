@@ -288,7 +288,7 @@
 							<a href="https://youtu.be/2reTF_kbmn8" class="background-image-blog img1 mb-0" target="_blank"></a>
 							<div class="card-body p-0 border border-top-0 br-br-5 br-bl-5">
 								<div class="p-5 border-bottom">
-									<a href="#" class="text-dark blog-title limit-3-line">ราคาที่ดินเปล่าก่อนการพัฒนาในกรุงเทพฯ - ปริมณฑล ไตรมาส 3 ปี 2565 </a>
+									<a href="#" class="text-dark blog-title limit-3-line">ราคาที่ดินเปล่าก่อนการพัฒนาในกรุงเทพฯ - ปริมณฑล ไตรมาส 3 ปี 2565</a>
 									<p class="mb-0 text-muted mt-4  limit-4-line">ดร.วิชัย วิรัตกพันธ์ ผู้ตรวจการธนาคารอาคารสงเคราะห์ เเละรักษาการผู้อำนวยการศูนย์ข้อมูลอสังหาริมทรัพย์ ให้สัมภาษณ์ในรายการ TNN ข่าวเที่ยง วันที่ 9 พฤศจิกายน 2565 หัวข้อเรื่อง "ราคาที่ดินเปล่าก่อนการพัฒนาในกรุงเทพฯ - ปริมณฑล ไตรมาส 3 ปี 2565</p>
 
 									<div href="#" class="d-flex flex-row-reverse me-3 mt-3">
@@ -307,8 +307,8 @@
 							</a>
 							<div class="card-body p-0 border border-top-0 br-br-5 br-bl-5">
 								<div class="p-5 border-bottom">
-									<a href="#" class="text-dark blog-title limit-3-line">One big move! A simple short note that </a>
-									<p class="mb-0 text-muted mt-4 limit-4-line">I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. </p>
+									<a href="#" class="text-dark blog-title limit-3-line">One big move! A simple short note that</a>
+									<p class="mb-0 text-muted mt-4 limit-4-line">I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
 
 									<div href="#" class="d-flex flex-row-reverse me-3 mt-3">
 										<div class="mt-0 text-muted text-12">Dec-01-2021</div>

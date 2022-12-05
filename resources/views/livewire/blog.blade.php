@@ -27,7 +27,7 @@
 	<div class="col-xl-8 col-lg-7 col-md-12">
 		<div class="card overflow-hidden">
 			<a href="{{url('blog-details')}}" class="card custom-card background-image-blog img1 mb-0">
-				<span class="badge rounded-pill bg-primary-gradient blog-label label1">nature</span>
+				<!-- <span class="badge rounded-pill bg-primary-gradient blog-label label1"></span> -->
 			</a>
 			<div class="card-body">
 				<a href="#" class="text-dark blog-title">Best Place To visit For a Holiday!</a>
