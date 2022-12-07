@@ -11,7 +11,6 @@ class Blog extends Component
 {
     public function render()
     {
-
         //connect to DB                 
         try {
             if (DB::connection()->getPdo()) {
@@ -21,8 +20,9 @@ class Blog extends Component
         } catch (Exception $e) {
             echo "Unable to connect";
         }
-        $results = DB::select('select * from blog where id = ?', array(1));
-        return view('livewire.blog', $results);
+        $results = DB::select('select * from blog');
+        $blogs = json_decode(json_encode($results), true);
+        return view('livewire.blog')->with('blogs', $blogs);
     }
 
     public function multiple_upload()
@@ -47,7 +47,7 @@ class Blog extends Component
                     if (in_array($fileType, $allowTypes)) {
                         // Upload file to server 
                         if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)) {
-                            // Image db insert sql 
+                            // Image db insert sql
                             $insertValuesSQL .= "('" . $fileName . "', NOW()),";
                         } else {
                             $errorUpload .= $_FILES['files']['name'][$key] . ' | ';
