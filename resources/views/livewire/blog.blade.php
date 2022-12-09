@@ -6,119 +6,83 @@
 
 @section('content')
 
-<!-- PAGE-HEADER -->
-<div class="page-header">
-	<div>
-		<h1 class="page-title">Blog</h1>
-	</div>
-	<div class="ms-auto pageheader-btn">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">Pages</li>
-			<li class="breadcrumb-item"><a href="javascript:void(0);">Blog</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Blog</li>
-		</ol>
-	</div>
-</div>
-<!-- PAGE-HEADER END -->
-
 <!-- row -->
+
+<!-- Blogs Space -->
 <div class="row">
-	<!-- Blogs Space -->
-	@foreach ($blogs as $blog)
-	<div class="col-xl-8 col-lg-7 col-md-12">
-		<div class="card overflow-hidden">
-			<img class="img-fluid mx-auto w-100" background-image="{{$blog['thumbnailpic']}}" alt="">
-			<a href="{{url($blog['thumbnailpic'])}}" style="background-image: url(../../assets/images/blog/{{$blog['thumbnailpic']}}) !important;
-															height: 200px;" class="card custom-card background-image-blog mb-0">
-				@switch ($blog['type'])
-				@case("Trend & Insight")
-				<span class="badge rounded-pill bg-secondary-gradient blog-label label1">{{$blog['type']}}</span>
-				@break
-				@case("Research")
-				<span class="badge rounded-pill bg-success-gradient blog-label label1">{{$blog['type']}}</span>
-				@break
-				@default //News
-				<span class="badge rounded-pill bg-info-gradient blog-label label1">{{$blog['type']}}</span>
-				@break
-				@endswitch
-			</a>
-
-			<div class="col-sm-6 col-lg-3 mt-2 mb-2">
-				<button class="btn btn-primary" data-bs-placement="top" data-bs-toggle="tooltip" title="Tooltip on top">Hover me</button>
-			</div>
-			<div class="card-body">
-				<h6 href="#" class="text-dark blog-title">{{$blog['header']}}</h6>
-				<p class="text-muted">{{$blog['description']}}</p>
-			</div>
-			<div class="card-footer">
-				<div class="d-sm-flex align-items-center">
-					<div class="d-sm-flex ms-sm-auto">
-						<div class="col-sm-6 col-lg-3 mt-2 mb-2">
-							<button class="btn btn-primary" data-bs-placement="top" data-bs-toggle="tooltip" title="Tooltip on top">Hover me</button>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header border-bottom d-block">
+				<div class="tabs-menu">
+					<!-- Tabs -->
+					<ul class="nav panel-tabs">
+						<li><a href="#trending" class="my-1 active me-1 text-default" data-bs-toggle="tab">Trending</a></li>
+						<li><a href="#popular" data-bs-toggle="tab" class="my-1 me-1 text-default">Popular</a></li>
+						<li><a href="#recent" data-bs-toggle="tab" class="my-1 me-1 text-default">Recent</a></li>
+						<li><a href="#editorpicks" data-bs-toggle="tab" class="my-1 text-default">Editor Picks</a></li>
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-default dropdown-toggle" data-bs-toggle="dropdown">
+								Action <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu my-1" role="menu">
+								<li class="dropdown-plus-title">
+									Dropdown
+									<b class="fa fa-angle-up" aria-hidden="true"></b>
+								</li>
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
 						</div>
-						<a class="text-muted me-4" href="#"><u>ลิ้งอ้างอิง</u></a>
-						<div class="mt-0 mt-0 me-2 text-muted">วันที่เขียนข่าว</div>
-						<span class="fe fe-calendar text-muted me-2 text-17"></span>
-						<div class="mt-0 mt-0 text-muted">Dec-01-2021</div>
-					</div>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	@endforeach
-
-	<div class="col-xl-8 col-lg-7 col-md-12">
-		<div class="card overflow-hidden">
-			<a href="{{url('blog-details')}}" class="card custom-card background-image-blog img1 mb-0">
-				<span class="badge rounded-pill bg-primary-gradient blog-label label1"></span>
-			</a>
-			<div class="card-body">
-				<h6 href="#" class="text-dark blog-title">something</h6>
-				<p class="mb-0 text-muted mt-4">I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
-				<p class="text-muted">I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
-			</div>
-			<div class="card-footer">
-				<div class="d-sm-flex align-items-center">
-					<div class="d-sm-flex ms-sm-auto">
-						<a href="#" class="d-flex me-3"><span class="fe fe-calendar text-muted me-2 text-17"></span>
-							<div class="mt-0 mt-0   text-muted">Dec-01-2021</div>
-						</a>
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-xl-6 col-lg-7 col-md-7">
+			@foreach ($blogs as $blog)
+			<div class="card overflow-hidden">
+				<img class="img-fluid mx-auto w-100" background-image="{{$blog['thumbnailpic']}}" alt="">
+				<a href="{{url($blog['thumbnailpic'])}}" style="background-image: url(../../assets/images/blog/{{$blog['thumbnailpic']}}) !important;
+															height: 200px;" class="card custom-card background-image-blog mb-0">
+					@switch ($blog['type'])
+					@case("Trend & Insight")
+					<span class="badge rounded-pill bg-secondary-gradient blog-label label1">{{$blog['type']}}</span>
+					@break
+					@case("Research")
+					<span class="badge rounded-pill bg-success-gradient blog-label label1">{{$blog['type']}}</span>
+					@break
+					@default
+					<!-- News -->
+					<span class="badge rounded-pill bg-info-gradient blog-label label1">{{$blog['type']}}</span>
+					@break
+					@endswitch
+				</a>
+				<div class="card-body">
+					<h6 href="#" class="text-dark blog-title">{{$blog['header']}}</h6>
+					<p class="text-muted">{{$blog['description']}}</p>
+				</div>
+				<div class="card-footer">
+					<div class="d-sm-flex align-items-center">
+						<div class="d-sm-flex ms-sm-auto">
+							<a class="text-muted me-4" href="{{$blog['link']}}" data-bs-placement="bottom" data-bs-toggle="tooltip" title="ลิ้งนี้จะพาคุณไปที่ {{$blog['link']}}"><u>ลิ้งอ้างอิง</u></a>
+							<div class="mt-0 mt-0 me-2 text-muted">วันที่เขียนข่าว</div>
+							<span class="fe fe-calendar text-muted me-2 text-17"></span>
+							<div class="mt-0 mt-0 text-muted">{{$blog['date']}}</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			@endforeach
 		</div>
-	</div>
-
-	@include(' livewire.blog-sidebar') <div class="col-xl-8 col-lg-7 col-md-12">
-		<div class="card overflow-hidden">
-			<a href="{{url('blog-details')}}" class="card custom-card background-image-blog img1 mb-0">
-				<span class="badge rounded-pill bg-primary-gradient blog-label label1">nature</span>
-			</a>
-			<div class="card-body">
-				<a href="#" class="text-dark blog-title">Best Place To visit For a Holiday!</a>
-				<p class="mb-0 text-muted mt-4">I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
-				<p class="text-muted">I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure.</p>
-				<a href="{{url('blog-details')}}" class="btn btn-outline-primary mt-2">Read More</a>
-			</div>
-			<div class="card-footer">
-				<div class="d-sm-flex align-items-center">
-					<div class="avatar-list indicators">
-						<a href="javascript:void(0)" class="avatar avatar-md rounded-circle cover-image" data-bs-image-src="{{asset('assets/images/users/4.jpg')}}"></a>
-					</div>
-					<h6 class="mb-0 text-muted ms-sm-2 mt-sm-0 mt-2">Jiggel mossin</h6>
-					<div class="d-sm-flex ms-sm-auto">
-						<a href="#" class="d-flex me-3"><span class="fe fe-calendar text-muted me-2 text-17"></span>
-							<div class="mt-0 mt-0   text-muted">Dec-01-2021</div>
-						</a>
-						<a class="me-0 d-flex" href="#"><span class="fe fe-message-square text-muted me-2 text-17"></span>
-							<div class="mt-0 mt-0   text-muted">11 Comments</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		@include('livewire.blog-sidebar')
 	</div>
 </div>
+
 <!-- /row -->
 
 <ul class="pagination product-pagination ms-auto float-end mb-4">
@@ -135,6 +99,11 @@
 @section('scripts')
 
 <!-- Tooltip and Popover JS -->
-<script src="{{asset('assets/js/tooltip&popover.js')}}"></script>
-
+<script>
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+</script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 @endsection

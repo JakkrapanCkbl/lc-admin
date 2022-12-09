@@ -1,6 +1,6 @@
 <!-- Side Menu -->
 
-<div class="col-xl-4 col-lg-5 col-md-12">
+<div class="col-xl-3 col-lg-5 col-md-12">
     <div class="card overflow-hidden">
         <div class="">
             <div class="card-header border-bottom d-block">

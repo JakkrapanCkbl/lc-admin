@@ -13,10 +13,7 @@ class Blog extends Component
     {
         //connect to DB                 
         try {
-            if (DB::connection()->getPdo()) {
-                echo "Successfully connected to the database => "
-                    . DB::connection()->getDatabaseName();
-            }
+            DB::connection()->getPdo();
         } catch (Exception $e) {
             echo "Unable to connect";
         }
