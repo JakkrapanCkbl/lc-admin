@@ -42,42 +42,30 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3"></div>
-		<div class="col-xl-6 col-lg-7 col-md-7">
-			@foreach ($blogs as $blog)
-			<div class="card overflow-hidden">
-				<img class="img-fluid mx-auto w-100" background-image="{{$blog['thumbnailpic']}}" alt="">
-				<a href="{{url($blog['thumbnailpic'])}}" style="background-image: url(../../assets/images/blog/{{$blog['thumbnailpic']}}) !important;
-															height: 200px;" class="card custom-card background-image-blog mb-0">
-					@switch ($blog['type'])
-					@case("Trend & Insight")
-					<span class="badge rounded-pill bg-secondary-gradient blog-label label1">{{$blog['type']}}</span>
-					@break
-					@case("Research")
-					<span class="badge rounded-pill bg-success-gradient blog-label label1">{{$blog['type']}}</span>
-					@break
-					@default
-					<!-- News -->
-					<span class="badge rounded-pill bg-info-gradient blog-label label1">{{$blog['type']}}</span>
-					@break
-					@endswitch
-				</a>
-				<div class="card-body">
-					<h6 href="#" class="text-dark blog-title">{{$blog['header']}}</h6>
-					<p class="text-muted">{{$blog['description']}}</p>
-				</div>
-				<div class="card-footer">
-					<div class="d-sm-flex align-items-center">
-						<div class="d-sm-flex ms-sm-auto">
-							<a class="text-muted me-4" href="{{$blog['link']}}" data-bs-placement="bottom" data-bs-toggle="tooltip" title="ลิ้งนี้จะพาคุณไปที่ {{$blog['link']}}"><u>ลิ้งอ้างอิง</u></a>
-							<div class="mt-0 mt-0 me-2 text-muted">วันที่เขียนข่าว</div>
-							<span class="fe fe-calendar text-muted me-2 text-17"></span>
-							<div class="mt-0 mt-0 text-muted">{{$blog['date']}}</div>
-						</div>
-					</div>
-				</div>
+		<div class="col-xl-3 col-lg-2"></div>
+		<div class="col-12">
+
+			<div id="demo">
+				<p id="ajaxtext1">Let AJAX change this text</p>
 			</div>
-			@endforeach
+			<div id="demo">
+				<p id="ajaxtext2">Let AJAX change this text</p>
+			</div>
+			<div id="demo">
+				<p id="ajaxtext3">Let AJAX change this text</p>
+				<button type="button" class="ajaxbutt" data-url="{{url('/blogdata/trend')}}">
+					Trend
+				</button>
+			</div>
+			<div id="demo">
+				<button type="button" class="ajaxbutt" data-url="{{url('/blogdata/recent')}}">
+					Recent
+				</button>
+			</div>
+
+		</div>
+		<div class="col-xl-6 col-lg-8 col-md-12 collapse">
+			@include('livewire.blogloop')
 		</div>
 		@include('livewire.blog-sidebar')
 	</div>
@@ -106,4 +94,113 @@
 	})
 </script>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+<!-- ajax jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+	// function buttonclick() {
+	// 	document.getElementById("ajaxtext").innerHTML = "Text is changed";
+	// }
+
+	$(".ajaxbutt").click(function() {
+		console.log($(this).data('url'));
+
+		$.ajax({
+			url: $(this).data('url'),
+			type: 'GET',
+			dataType: 'json',
+			success: function(blogs) {
+				console.log("ok");
+				console.log(blogs);
+				$('#ajaxtext1').text(url);
+				$('#ajaxtext2').text(blogs);
+				$('.collapse').collapse('show');
+				$('#blogcard').html(blogs)
+			},
+			error: function() {
+				console.log("notok");
+			}
+		});
+	});
+</script>
+<script>
+	//dropdown-menu text change
+	$(".dropdown-menu a").click(function() {
+		$("button").text($(this).text());
+	})
+</script>
+<script>
+	jQuery(document).ready(function() {
+		jQuery('#ajaxSubmit').click(function(e) {
+			e.preventDefault();
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+				}
+			});
+		});
+	});
+</script>
+
+<script>
+	$(document).ready(function() {
+
+		function fetch_data(page, sort_type, sort_by, query) {
+			$.ajax({
+				url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+				success: function(data) {
+					$('tbody').html('');
+					$('tbody').html(data);
+				}
+			})
+		}
+
+		$(document).on('keyup', '#serach', function() {
+			var query = $('#serach').val();
+			var column_name = $('#hidden_column_name').val();
+			var sort_type = $('#hidden_sort_type').val();
+			var page = $('#hidden_page').val();
+			fetch_data(page, sort_type, column_name, query);
+		});
+
+		$(document).on('click', '.sorting', function() {
+			var column_name = $(this).data('column_name');
+			var order_type = $(this).data('sorting_type');
+			var reverse_order = '';
+			if (order_type == 'asc') {
+				$(this).data('sorting_type', 'desc');
+				reverse_order = 'desc';
+				clear_icon();
+				$('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-bottom"></span>');
+			}
+			if (order_type == 'desc') {
+				$(this).data('sorting_type', 'asc');
+				reverse_order = 'asc';
+				clear_icon
+				$('#' + column_name + '_icon').html('<span class="glyphicon glyphicon-triangle-top"></span>');
+			}
+			$('#hidden_column_name').val(column_name);
+			$('#hidden_sort_type').val(reverse_order);
+			var page = $('#hidden_page').val();
+			var query = $('#serach').val();
+			fetch_data(page, reverse_order, column_name, query);
+		});
+
+		$(document).on('click', '.pagination a', function(event) {
+			event.preventDefault();
+			var page = $(this).attr('href').split('page=')[1];
+			$('#hidden_page').val(page);
+			var column_name = $('#hidden_column_name').val();
+			var sort_type = $('#hidden_sort_type').val();
+
+			var query = $('#serach').val();
+
+			$('li').removeClass('active');
+			$(this).parent().addClass('active');
+			fetch_data(page, sort_type, column_name, query);
+		});
+
+	});
+</script>
+
 @endsection

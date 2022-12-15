@@ -6,20 +6,52 @@ use Livewire\Component;
 use DB;
 use Input;
 use Exception;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 class Blog extends Component
 {
     public function render()
     {
-        //connect to DB                 
-        try {
-            DB::connection()->getPdo();
-        } catch (Exception $e) {
-            echo "Unable to connect";
-        }
-        $results = DB::select('select * from blog');
-        $blogs = json_decode(json_encode($results), true);
+        $query = DB::select('select * from blog');
+        $blogs = json_decode(json_encode($query), true);
         return view('livewire.blog')->with('blogs', $blogs);
+    }
+
+    public function index()
+    {
+        $msg = "This is a simple message.";
+        return response()->json(array('msg' => $msg), 200);
+    }
+
+    public function blogquery(Request $request, $tag)
+    {
+        switch ($tag) {
+            case "trend":
+                $where = "WHERE type = 'Trend'";
+                break;
+            default: //Recent
+                $where = "ORDER BY date DESC";
+                break;
+        }
+        $blogs = DB::select('select * from blog ' . $where);
+        // $blogs = json_decode(json_encode($blogs));
+        dd($blogs[0]['id']);
+        return View::make("livewire.blogloop", compact('blogs'));
+    }
+
+    public function query(Request $request, $tag)
+    {
+        switch ($tag) {
+            case "trend":
+                $where = "WHERE type = 'Trend'";
+                break;
+            default: //Recent
+                $where = "ORDER BY date DESC";
+                break;
+        }
+        $blogs = DB::select('select * from blog ' . $where);
+        return $blogs;
     }
 
     public function multiple_upload()

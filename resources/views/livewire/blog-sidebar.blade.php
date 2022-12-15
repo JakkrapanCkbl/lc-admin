@@ -1,37 +1,29 @@
 <!-- Side Menu -->
 
-<div class="col-xl-3 col-lg-5 col-md-12">
+<div class="col-xl-3 col-lg-8 col-md-12 mx-auto">
     <div class="card overflow-hidden">
         <div class="">
             <div class="card-header border-bottom d-block">
                 <div class="tabs-menu">
                     <!-- Tabs -->
                     <ul class="nav panel-tabs">
-                        <li><a href="#trending" class="my-1 active me-1 text-default" data-bs-toggle="tab">Trending</a></li>
+                        <li><a href="#trending" class="my-1 active me-1 text-default" data-bs-toggle="tab">Recent</a></li>
                         <li><a href="#popular" data-bs-toggle="tab" class="my-1 me-1 text-default">Popular</a></li>
-                        <li><a href="#recent" data-bs-toggle="tab" class="my-1 me-1 text-default">Recent</a></li>
+                        <li><a href="#recent" data-bs-toggle="tab" class="my-1 me-1 text-default">Trending</a></li>
                         <li><a href="#editorpicks" data-bs-toggle="tab" class="my-1 text-default">Editor Picks</a></li>
                         <div class="btn-group mt-2 mb-2">
                             <button type="button" class="btn btn-outline-default dropdown-toggle" data-bs-toggle="dropdown">
-                                Action <span class="caret"></span>
+                                Tag <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown-plus-title">
-                                    Dropdown
-                                    <b class="fa fa-angle-up" aria-hidden="true"></b>
-                                </li>
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Trends & Insight</a></li>
+                                <li><a href="#">Research</a></li>
                             </ul>
                         </div>
                     </ul>
                 </div>
             </div>
-
-
 
             <div class="card-body">
                 <div class="tab-content">
