@@ -152,7 +152,7 @@ Route::get('badge', Badge::class);
 Route::get('blog-details', BlogDetails::class);
 Route::get('blog-edit', BlogEdit::class);
 Route::get('blog', Blog::class);
-Route::get('blogdata/{tag}', [Blog::class, 'blogquery']);
+Route::get('blogdata/{tag}', [Blog::class, 'blogcollapse']);
 
 Route::get('border', Border::class);
 Route::get('breadcrumbs', Breadcrumbs::class);

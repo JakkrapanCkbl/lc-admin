@@ -24,7 +24,24 @@ class Blog extends Component
         return response()->json(array('msg' => $msg), 200);
     }
 
-    public function blogquery(Request $request, $tag)
+    public function blogcollapse($tag)
+    {
+        switch ($tag) {
+            case "trend":
+                $where = "WHERE type = 'Trend'";
+                break;
+            default: //Recent
+                $where = "ORDER BY date DESC";
+                break;
+        }
+        $blogs = DB::select('select id from blog ' . $where);
+        $blogs = json_decode(json_encode($blogs), true);
+
+        return $blogs;
+        // return $blogs;
+    }
+
+    public function blogquery($tag)
     {
         switch ($tag) {
             case "trend":
@@ -35,9 +52,10 @@ class Blog extends Component
                 break;
         }
         $blogs = DB::select('select * from blog ' . $where);
-        // $blogs = json_decode(json_encode($blogs));
-        dd($blogs[0]['id']);
-        return View::make("livewire.blogloop", compact('blogs'));
+        $blogs = json_decode(json_encode($blogs), true);
+
+        return View::make("livewire.blogloop", ["blogs" => $blogs]);
+        // return $blogs;
     }
 
     public function query(Request $request, $tag)

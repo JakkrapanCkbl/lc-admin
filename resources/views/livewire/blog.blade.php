@@ -44,15 +44,7 @@
 	<div class="row">
 		<div class="col-xl-3 col-lg-2"></div>
 		<div class="col-12">
-
 			<div id="demo">
-				<p id="ajaxtext1">Let AJAX change this text</p>
-			</div>
-			<div id="demo">
-				<p id="ajaxtext2">Let AJAX change this text</p>
-			</div>
-			<div id="demo">
-				<p id="ajaxtext3">Let AJAX change this text</p>
 				<button type="button" class="ajaxbutt" data-url="{{url('/blogdata/trend')}}">
 					Trend
 				</button>
@@ -102,24 +94,40 @@
 	// 	document.getElementById("ajaxtext").innerHTML = "Text is changed";
 	// }
 
-	$(".ajaxbutt").click(function() {
-		console.log($(this).data('url'));
-
+	$(document).ready(function() {
 		$.ajax({
 			url: $(this).data('url'),
 			type: 'GET',
-			dataType: 'json',
-			success: function(blogs) {
-				console.log("ok");
-				console.log(blogs);
-				$('#ajaxtext1').text(url);
-				$('#ajaxtext2').text(blogs);
-				$('.collapse').collapse('show');
-				$('#blogcard').html(blogs)
+			beforeSend: function() {
+				$('#current_page').append("loading..");
+				console.log("Loading");
 			},
-			error: function() {
-				console.log("notok");
+			success: function(blogs) {
+				$('.collapse').collapse('show');
+				// $('#blogcard').html(blogs);
 			}
+		});
+
+		$(".ajaxbutt").click(function() {
+			$.ajax({
+				url: $(this).data('url'),
+				type: 'GET',
+				// dataType: 'json',
+				success: function(blogs) {
+					console.log("ok");
+					console.log(blogs);
+					if (blogs['id'] == 1) {
+						$('.collapse').collapse('hide');
+						console.log("ok ".blogs['id']);
+					} else {
+						$('.collapse').collapse('show');
+					}
+					// $('#blogcard').html(blogs)
+				},
+				error: function(xhr, status, error) {
+					console.log("notok")
+				}
+			});
 		});
 	});
 </script>
