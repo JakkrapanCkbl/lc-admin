@@ -14,9 +14,7 @@
 
 	</head>
 
-	<body class="ltr app horizontal landing-page">
-
-		<a href="javascript:void(0);" class="buy-now">Buy Now</a>
+	<body class="ltr app horizontal landing-page"></body>
 
 		<!-- GLOBAL-LOADER -->
 		<div id="global-loader">
@@ -38,7 +36,6 @@
 
 					</div>
 
-                    @include('layouts.components.landing.header-main')
 
 				</div>
 				<!--/APP-SIDEBAR-->

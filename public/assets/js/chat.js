@@ -1,1 +1,19 @@
-$((function(){"use strict";new PerfectScrollbar("#ChatBody",{useBothWheelAxes:!0,suppressScrollX:!0}),new PerfectScrollbar(".profile-details-main",{useBothWheelAxes:!0,suppressScrollX:!0})}));
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*************************************!*\
+  !*** ./resources/assets/js/chat.js ***!
+  \*************************************/
+$(function () {
+  'use strict';
+
+  var ps5 = new PerfectScrollbar('#ChatBody', {
+    useBothWheelAxes: true,
+    suppressScrollX: true
+  });
+  var ps6 = new PerfectScrollbar('.profile-details-main', {
+    useBothWheelAxes: true,
+    suppressScrollX: true
+  });
+});
+/******/ })()
+;
