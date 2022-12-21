@@ -43,27 +43,12 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-3 col-lg-2"></div>
-		<div class="col-12">
-			<div id="demo">
-				<button type="button" class="ajaxbutt" data-url="{{url('/blogdata/trend')}}">
-					Trend
-				</button>
-			</div>
-			<div id="demo">
-				<button type="button" class="ajaxbutt" data-url="{{url('/blogdata/recent')}}">
-					Recent
-				</button>
-			</div>
-
-		</div>
-		<div class="col-xl-6 col-lg-8 col-md-12 collapse">
+		<div class='col-xl-6 col-lg-8 col-md-12' id='blogquery'>
 			@include('livewire.blogloop')
 		</div>
 		@include('livewire.blog-sidebar')
 	</div>
 </div>
-
-<!-- /row -->
 
 <ul class="pagination product-pagination ms-auto float-end mb-4">
 	<li class="page-item page-prev disabled"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
@@ -90,66 +75,33 @@
 <!-- ajax jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-	// function buttonclick() {
-	// 	document.getElementById("ajaxtext").innerHTML = "Text is changed";
-	// }
-
 	$(document).ready(function() {
-		$.ajax({
-			url: $(this).data('url'),
-			type: 'GET',
-			beforeSend: function() {
-				$('#current_page').append("loading..");
-				console.log("Loading");
-			},
-			success: function(blogs) {
-				$('.collapse').collapse('show');
-				// $('#blogcard').html(blogs);
-			}
-		});
-
-		$(".ajaxbutt").click(function() {
+		$(".ajaxtagbutton").click(function() {
+			console.log("Clicked");
 			$.ajax({
 				url: $(this).data('url'),
 				type: 'GET',
-				// dataType: 'json',
+				dataType: 'html',
 				success: function(blogs) {
 					console.log("ok");
 					console.log(blogs);
-					if (blogs['id'] == 1) {
-						$('.collapse').collapse('hide');
-						console.log("ok ".blogs['id']);
-					} else {
-						$('.collapse').collapse('show');
-					}
-					// $('#blogcard').html(blogs)
+					// await $('.collapseprevtag').remove();
+					// await $('.blogquery').append(blogs);
+					$('#blogquery').html(blogs);
 				},
 				error: function(xhr, status, error) {
 					console.log("notok")
-				}
+				}  
 			});
 		});
 	});
 </script>
 <script>
-	//dropdown-menu text change
+	//dropdown-menu tag search change
 	$(".dropdown-menu a").click(function() {
 		$("button").text($(this).text());
 	})
 </script>
-<script>
-	jQuery(document).ready(function() {
-		jQuery('#ajaxSubmit').click(function(e) {
-			e.preventDefault();
-			$.ajaxSetup({
-				headers: {
-					'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-				}
-			});
-		});
-	});
-</script>
-
 <script>
 	$(document).ready(function() {
 

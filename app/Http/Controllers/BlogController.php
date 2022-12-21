@@ -1,44 +1,20 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Controllers;
 
-use Livewire\Component;
+use App\Http\Controllers\Controller;
 use DB;
-use Input;
-use Exception;
 use Illuminate\Support\Facades\View;
-use Illuminate\Http\Request;
+use App\Models\Blog;
 
-class Blog extends Component
+class BlogController extends Controller
 {
-    public function render()
-    {
-        $query = DB::select('select * from blog');
-        $blogs = json_decode(json_encode($query), true);
-        return view('livewire.blog')->with('blogs', $blogs);
-    }
-
     public function index()
     {
-        $msg = "This is a simple message.";
-        return response()->json(array('msg' => $msg), 200);
-    }
-
-    public function blogcollapse($tag)
-    {
-        switch ($tag) {
-            case "trend":
-                $where = "WHERE type = 'Trend'";
-                break;
-            default: //Recent
-                $where = "ORDER BY date DESC";
-                break;
-        }
-        $blogs = DB::select('select id from blog ' . $where);
-        $blogs = json_decode(json_encode($blogs), true);
-
-        return $blogs;
-        // return $blogs;
+        $query = Blog::select('select * from blog ORDER BY date DESC');
+        $blogs = json_decode(json_encode($query), true);
+        dd($blogs);
+        return view('livewire.blog')->with('blogs', $blogs);
     }
 
     public function blogquery($tag)
@@ -47,18 +23,23 @@ class Blog extends Component
             case "trend":
                 $where = "WHERE type = 'Trend'";
                 break;
+            case "news":
+                $where = "WHERE type = 'News'";
+                break;
+            case "research":
+                $where = "WHERE type = 'Research'";
+                break;
             default: //Recent
                 $where = "ORDER BY date DESC";
                 break;
         }
-        $blogs = DB::select('select * from blog ' . $where);
+        $blogs = Blog::select('select * from blog ' . $where);
         $blogs = json_decode(json_encode($blogs), true);
-
-        return View::make("livewire.blogloop", ["blogs" => $blogs]);
+        return View::make("livewire.blogloop", ['blogs' => $blogs]);
         // return $blogs;
     }
 
-    public function query(Request $request, $tag)
+    public function query($tag)
     {
         switch ($tag) {
             case "trend":

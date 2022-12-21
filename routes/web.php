@@ -6,7 +6,6 @@ use App\Http\Livewire\Alerts;
 use App\Http\Livewire\Avatar;
 use App\Http\Livewire\Background;
 use App\Http\Livewire\Badge;
-use App\Http\Livewire\Blog;
 use App\Http\Livewire\BlogDetails;
 use App\Http\Livewire\BlogEdit;
 use App\Http\Livewire\Border;
@@ -128,6 +127,8 @@ use App\Http\Livewire\Wysiwyag;
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BlogController; //Blog to BlogController
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -151,8 +152,8 @@ Route::get('background', Background::class);
 Route::get('badge', Badge::class);
 Route::get('blog-details', BlogDetails::class);
 Route::get('blog-edit', BlogEdit::class);
-Route::get('blog', Blog::class);
-Route::get('blogdata/{tag}', [Blog::class, 'blogcollapse']);
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blogdata/{tag}', [BlogController::class, 'blogquery']);
 
 Route::get('border', Border::class);
 Route::get('breadcrumbs', Breadcrumbs::class);
