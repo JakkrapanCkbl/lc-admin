@@ -11,8 +11,10 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $query = Blog::select('select * from blog ORDER BY date DESC');
-        $blogs = json_decode(json_encode($query), true);
+        // $query = DB::select('select * from blog ORDER BY date DESC');
+        // $blogs = Blog::orderBy('date');
+        $blogs = Blog::paginate(2);
+        $blogs = json_decode(json_encode($blogs), true);
         dd($blogs);
         return view('livewire.blog')->with('blogs', $blogs);
     }
@@ -33,7 +35,8 @@ class BlogController extends Controller
                 $where = "ORDER BY date DESC";
                 break;
         }
-        $blogs = Blog::select('select * from blog ' . $where);
+        // $blogs = Blog::select('select * from blog ' . $where);
+        $blogs = Blog::orderBy('date')->first();
         $blogs = json_decode(json_encode($blogs), true);
         return View::make("livewire.blogloop", ['blogs' => $blogs]);
         // return $blogs;
