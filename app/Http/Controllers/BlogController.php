@@ -11,49 +11,19 @@ class BlogController extends Controller
 {
     public function index()
     {
-        // $query = DB::select('select * from blog ORDER BY date DESC');
-        // $blogs = Blog::orderBy('date');
-        $blogs = Blog::paginate(2);
+        $blogs = Blog::paginate(5);
         $blogs = json_decode(json_encode($blogs), true);
-        dd($blogs);
-        return view('livewire.blog')->with('blogs', $blogs);
+        return view('livewire.blog')->with('blogs', $blogs['data']);
     }
 
     public function blogquery($tag)
     {
-        switch ($tag) {
-            case "trend":
-                $where = "WHERE type = 'Trend'";
-                break;
-            case "news":
-                $where = "WHERE type = 'News'";
-                break;
-            case "research":
-                $where = "WHERE type = 'Research'";
-                break;
-            default: //Recent
-                $where = "ORDER BY date DESC";
-                break;
-        }
-        // $blogs = Blog::select('select * from blog ' . $where);
-        $blogs = Blog::orderBy('date')->first();
+        $blogs = new Blog;
+        $blogs = $blogs->sortingBlog($tag);
+        $blogs = $blogs;
         $blogs = json_decode(json_encode($blogs), true);
         return View::make("livewire.blogloop", ['blogs' => $blogs]);
         // return $blogs;
-    }
-
-    public function query($tag)
-    {
-        switch ($tag) {
-            case "trend":
-                $where = "WHERE type = 'Trend'";
-                break;
-            default: //Recent
-                $where = "ORDER BY date DESC";
-                break;
-        }
-        $blogs = DB::select('select * from blog ' . $where);
-        return $blogs;
     }
 
     public function multiple_upload()

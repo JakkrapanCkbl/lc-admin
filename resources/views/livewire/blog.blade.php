@@ -52,11 +52,11 @@
 
 <ul class="pagination product-pagination ms-auto float-end mb-4">
 	<li class="page-item page-prev disabled"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
-	<li class="page-item active"><a class="page-link" href="#">1</a></li>
-	<li class="page-item"><a class="page-link" href="#">2</a></li>
-	<li class="page-item"><a class="page-link" href="#">3</a></li>
-	<li class="page-item"><a class="page-link" href="#">4</a></li>
-	<li class="page-item page-next"><a class="page-link" href="#">Next</a></li>
+	<li class="page-item active"><a class="page-link" href="#1">1</a></li>
+	<li class="page-item"><a class="page-link" href="#2">2</a></li>
+	<li class="page-item"><a class="page-link" href="3">3</a></li>
+	<li class="page-item"><a class="page-link" href="4">4</a></li>
+	<li class="page-item page-next"><a class="page-link" href="#" tabindex="+1">Next</a></li>
 </ul>
 
 @endsection
@@ -91,7 +91,7 @@
 				},
 				error: function(xhr, status, error) {
 					console.log("notok")
-				}  
+				}
 			});
 		});
 	});
@@ -105,12 +105,13 @@
 <script>
 	$(document).ready(function() {
 
-		function fetch_data(page, sort_type, sort_by, query) {
+		function fetch_data(page) {
 			$.ajax({
-				url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+				// url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+				url: "/pagination/blogquery?page=" + page,
 				success: function(data) {
-					$('tbody').html('');
-					$('tbody').html(data);
+					$('#blogquery').html('');
+					$('#blogquery').html(data);
 				}
 			})
 		}
@@ -147,17 +148,21 @@
 		});
 
 		$(document).on('click', '.pagination a', function(event) {
+			console.log("}agination");
 			event.preventDefault();
-			var page = $(this).attr('href').split('page=')[1];
-			$('#hidden_page').val(page);
-			var column_name = $('#hidden_column_name').val();
-			var sort_type = $('#hidden_sort_type').val();
+			var page = $(this).attr('href').split('page=')[0];
+			console.log(page);
 
-			var query = $('#serach').val();
+			// $('#hidden_page').val(page);
+			// var column_name = $('#hidden_column_name').val();
+			// var sort_type = $('#hidden_sort_type').val();
+
+			// var query = $('#serach').val();
 
 			$('li').removeClass('active');
 			$(this).parent().addClass('active');
-			fetch_data(page, sort_type, column_name, query);
+			// fetch_data(page, sort_type, column_name, query);
+			fetch_data(page);
 		});
 
 	});
