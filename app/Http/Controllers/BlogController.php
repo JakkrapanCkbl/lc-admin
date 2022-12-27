@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\View;
 use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -16,14 +17,17 @@ class BlogController extends Controller
         return view('livewire.blog')->with('blogs', $blogs['data']);
     }
 
-    public function blogquery($tag)
+    public function blogquery(Request $request, $tag)
     {
         $blogs = new Blog;
         $blogs = $blogs->sortingBlog($tag);
-        $blogs = $blogs;
         $blogs = json_decode(json_encode($blogs), true);
+        if ($request->ajax()) {
+            
+        }
         return View::make("livewire.blogloop", ['blogs' => $blogs]);
         // return $blogs;
+
     }
 
     public function multiple_upload()

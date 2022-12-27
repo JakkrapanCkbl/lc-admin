@@ -52,8 +52,8 @@
 
 <ul class="pagination product-pagination ms-auto float-end mb-4">
 	<li class="page-item page-prev disabled"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
-	<li class="page-item active"><a class="page-link" href="#1">1</a></li>
-	<li class="page-item"><a class="page-link" href="#2">2</a></li>
+	<li class="page-item active"><a class="page-link" href="1">1</a></li>
+	<li class="page-item"><a class="page-link" href="2" id="pagination2">2</a></li>
 	<li class="page-item"><a class="page-link" href="3">3</a></li>
 	<li class="page-item"><a class="page-link" href="4">4</a></li>
 	<li class="page-item page-next"><a class="page-link" href="#" tabindex="+1">Next</a></li>
@@ -76,27 +76,66 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$(".ajaxtagbutton").click(function() {
-			console.log("Clicked");
+
+		var blogType = "";
+
+		function fetch_data(url, page) {
+			// $.ajax({
+			// url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
+			// url: window.location.href + "?page=" + page,
+			// success: function(blogs) {
+			// 	console.log(blogs);
+			// 	$('#blogquery').html(blogs);
+			// }
+			// })
 			$.ajax({
-				url: $(this).data('url'),
+				url: url,
 				type: 'GET',
 				dataType: 'html',
 				success: function(blogs) {
-					console.log("ok");
-					console.log(blogs);
-					// await $('.collapseprevtag').remove();
-					// await $('.blogquery').append(blogs);
+					console.log("Fetch Complete: " + blogType)
 					$('#blogquery').html(blogs);
 				},
 				error: function(xhr, status, error) {
 					console.log("notok")
 				}
 			});
+
+		}
+
+		$(".ajaxtagbutton").click(function() {
+			// $.ajax({
+			// 	url: $(this).data('url'),
+			// 	type: 'GET',
+			// 	dataType: 'html',
+			// 	success: function(blogs) {
+			// 		$('#blogquery').html(blogs);
+			// 	},
+			// 	error: function(xhr, status, error) {
+			// 		console.log("notok")
+			// 	}
+			// });
+			var page = $(this).attr('href').split('page=');
+			var url = $(this).data('url') + "?page=" + page;
+			blogType = url;
+			fetch_data(url, page);
 		});
+
+		$(".pagination a").click(function() {
+			event.preventDefault();
+			$('li').removeClass('active');
+			$(this).parent().addClass('active');
+
+			var page = $('.pagination a').attr('href').split('page=')[0];
+			var url = blogType + "?page=" + page;
+
+			console.log("Pagination " + $(this).attr('href'));
+			console.log($(this));
+
+			fetch_data(url);
+		});
+
 	});
-</script>
-<script>
 	//dropdown-menu tag search change
 	$(".dropdown-menu a").click(function() {
 		$("button").text($(this).text());
@@ -105,16 +144,24 @@
 <script>
 	$(document).ready(function() {
 
-		function fetch_data(page) {
-			$.ajax({
-				// url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
-				url: "/pagination/blogquery?page=" + page,
-				success: function(data) {
-					$('#blogquery').html('');
-					$('#blogquery').html(data);
-				}
-			})
-		}
+
+		// $(document).on('click', '.pagination a', function(event) {
+		// 	console.log("Pagination");
+		// 	event.preventDefault();
+		// 	var page = $(this).attr('href').split('page=')[0];
+		// 	console.log(page);
+
+		// 	// $('#hidden_page').val(page);
+		// 	// var column_name = $('#hidden_column_name').val();
+		// 	// var sort_type = $('#hidden_sort_type').val();
+
+		// 	// var query = $('#serach').val();
+
+		// 	$('li').removeClass('active');
+		// 	$(this).parent().addClass('active');
+		// 	// fetch_data(page, sort_type, column_name, query);
+		// 	fetch_data(page);
+		// });
 
 		$(document).on('keyup', '#serach', function() {
 			var query = $('#serach').val();
@@ -145,24 +192,6 @@
 			var page = $('#hidden_page').val();
 			var query = $('#serach').val();
 			fetch_data(page, reverse_order, column_name, query);
-		});
-
-		$(document).on('click', '.pagination a', function(event) {
-			console.log("}agination");
-			event.preventDefault();
-			var page = $(this).attr('href').split('page=')[0];
-			console.log(page);
-
-			// $('#hidden_page').val(page);
-			// var column_name = $('#hidden_column_name').val();
-			// var sort_type = $('#hidden_sort_type').val();
-
-			// var query = $('#serach').val();
-
-			$('li').removeClass('active');
-			$(this).parent().addClass('active');
-			// fetch_data(page, sort_type, column_name, query);
-			fetch_data(page);
 		});
 
 	});
