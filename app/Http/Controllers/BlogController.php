@@ -14,20 +14,20 @@ class BlogController extends Controller
     {
         $blogs = Blog::paginate(5);
         $blogs = json_decode(json_encode($blogs), true);
+        // dd($blogs['data']);
         return view('livewire.blog')->with('blogs', $blogs['data']);
     }
 
-    public function blogquery(Request $request, $tag)
+    public function blogquery($tag, $page)
     {
-        $blogs = new Blog;
-        $blogs = $blogs->sortingBlog($tag);
+
+        $blogs = Blog::where('type', $tag)->paginate(2, '*', 'page', $page); //paginate(2,[*],'page',2
+
         $blogs = json_decode(json_encode($blogs), true);
-        if ($request->ajax()) {
-            
-        }
+        dd($blogs);
+
         return View::make("livewire.blogloop", ['blogs' => $blogs]);
         // return $blogs;
-
     }
 
     public function multiple_upload()

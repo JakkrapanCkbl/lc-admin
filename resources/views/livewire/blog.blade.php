@@ -51,7 +51,7 @@
 </div>
 
 <ul class="pagination product-pagination ms-auto float-end mb-4">
-	<li class="page-item page-prev disabled"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
+	<li class="page-item page-prev"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
 	<li class="page-item active"><a class="page-link" href="1">1</a></li>
 	<li class="page-item"><a class="page-link" href="2" id="pagination2">2</a></li>
 	<li class="page-item"><a class="page-link" href="3">3</a></li>
@@ -93,7 +93,7 @@
 				type: 'GET',
 				dataType: 'html',
 				success: function(blogs) {
-					console.log("Fetch Complete: " + blogType)
+					console.log("Fetch Complete: " + blogs)
 					$('#blogquery').html(blogs);
 				},
 				error: function(xhr, status, error) {
@@ -115,7 +115,7 @@
 			// 		console.log("notok")
 			// 	}
 			// });
-			var page = $(this).attr('href').split('page=');
+			var page = 1;
 			var url = $(this).data('url') + "?page=" + page;
 			blogType = url;
 			fetch_data(url, page);
@@ -126,14 +126,16 @@
 			$('li').removeClass('active');
 			$(this).parent().addClass('active');
 
-			var page = $('.pagination a').attr('href').split('page=')[0];
+			var page = $(this).attr('href');
 			var url = blogType + "?page=" + page;
 
+			console.log("Pag Link: " + url)
 			console.log("Pagination " + $(this).attr('href'));
-			console.log($(this));
 
-			fetch_data(url);
+			fetch_data(url, page);
 		});
+
+		
 
 	});
 	//dropdown-menu tag search change
