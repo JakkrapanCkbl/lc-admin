@@ -18,15 +18,14 @@ class BlogController extends Controller
         return view('livewire.blog')->with('blogs', $blogs['data']);
     }
 
-    public function blogquery($tag, $page)
+    public function blogquery($tag)
     {
-
-        $blogs = Blog::where('type', $tag)->paginate(2, '*', 'page', $page); //paginate(2,[*],'page',2
+        $blogs = Blog::where('type', $tag)->paginate(2, '*', 'page'); //paginate(2,[*],'page',2
 
         $blogs = json_decode(json_encode($blogs), true);
-        dd($blogs);
+        // dd($blogs['data']);
 
-        return View::make("livewire.blogloop", ['blogs' => $blogs]);
+        return View::make("livewire.blogloop", ['blogs' => $blogs['data']]);
         // return $blogs;
     }
 
