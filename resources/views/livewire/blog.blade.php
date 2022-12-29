@@ -53,7 +53,7 @@
 <ul class="pagination product-pagination ms-auto float-end mb-4">
 	<li class="page-item page-prev"><a class="page-link" href="#" tabindex="-1">Prev</a></li>
 	<li class="page-item active"><a class="page-link" href="1">1</a></li>
-	<li class="page-item"><a class="page-link" href="2" id="pagination2">2</a></li>
+	<li class="page-item"><a class="page-link" href="2">2</a></li>
 	<li class="page-item"><a class="page-link" href="3">3</a></li>
 	<li class="page-item"><a class="page-link" href="4">4</a></li>
 	<li class="page-item page-next"><a class="page-link" href="#" tabindex="+1">Next</a></li>
@@ -79,7 +79,7 @@
 
 		var blogType = "";
 
-		function fetch_data(url, page) {
+		function fetch_data(url) {
 			// $.ajax({
 			// url: "/pagination/fetch_data?page=" + page + "&sortby=" + sort_by + "&sorttype=" + sort_type + "&query=" + query,
 			// url: window.location.href + "?page=" + page,
@@ -117,8 +117,9 @@
 			// });
 			var page = 1;
 			var url = $(this).data('url') + "?page=" + page;
+
 			blogType = url;
-			fetch_data(url, page);
+			fetch_data(url);
 		});
 
 		$(".pagination a").click(function() {
@@ -127,15 +128,15 @@
 			$(this).parent().addClass('active');
 
 			var page = $(this).attr('href');
-			var url = blogType + "?page=" + page;
+			var url = blogType.slice(0, -1) + page;
 
 			console.log("Pag Link: " + url)
 			console.log("Pagination " + $(this).attr('href'));
 
-			fetch_data(url, page);
+			fetch_data(url);
 		});
 
-		
+
 
 	});
 	//dropdown-menu tag search change
