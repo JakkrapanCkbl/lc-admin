@@ -3,9 +3,9 @@
       <div class='blogid{{$blog["id"]}}'>
           <div class='card overflow-hidden'>
               <img class='img-fluid mx-auto w-100' background-image='{{$blog["thumbnailpic"]}}' alt=''>
-              <a href='{{url($blog["thumbnailpic"])}}' style='background-image: url(../../assets/images/blog/{{$blog["thumbnailpic"]}}) !important;
+              <!-- todo {{$blog["link"]}} change to link to blog in our web -->
+              <a href='{{$blog["link"]}}' style='background-image: url(../../assets/images/blog/{{$blog["thumbnailpic"]}}) !important;
 															height: 200px;' class='card custom-card background-image-blog mb-0'>
-                  <!--  -->
                   @switch ($blog["type"])
                   @case('Trend & Insight')
                   <span class='badge rounded-pill bg-secondary-gradient blog-label label1'>{{$blog["type"]}}</span>

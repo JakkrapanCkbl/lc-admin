@@ -128,6 +128,7 @@ use App\Http\Livewire\Wysiwyag;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController; //Blog to BlogController
+use Illuminate\Contracts\View\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,6 +145,12 @@ Route::get('/', function () {
     return view('livewire.landing'); //start at landing page
 });
 
+Route::get('/invoice', function () {
+    return view('invoice');
+});
+Route::get('/invoice-old', function () {
+    return view('invoice-old');
+});
 Route::get('about', About::class);
 Route::get('accordion', Accordion::class);
 Route::get('alerts', Alerts::class);
