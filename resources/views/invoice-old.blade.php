@@ -174,15 +174,6 @@
 
     <h2 id="demo"></h2>
     <script>
-        function myFunction() {
-            var elmnt = document.getElementById("maincontent");
-            var height = "";
-            height = elmnt.clientHeight;
-            document.getElementById("demo").innerHTML = height;
-            if (hour < 18) {
-                greeting = "Good day";
-            }
-        }
     </script>
 
 </body>
