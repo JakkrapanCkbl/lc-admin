@@ -4,7 +4,11 @@
 
 <style>
 	.page-title {
-		font-size: 30px;
+		font-size: 34px;
+	}
+
+	h2 {
+		font-size: 29px;
 	}
 
 	td,
@@ -17,194 +21,193 @@
 		font-size: 18px;
 	}
 
-	tr {
-		border-bottom: 1px solid black;
-		border-top: 1px solid black;
-		border-collapse: collapse;
+	hr {
+		display: block;
+		height: 1px;
+		background: transparent;
+		width: 100%;
+		border: none;
+		border-top: solid 1px #333;
 	}
 
 	.tableheader th {
-		color: #1338BE;
-		font-size: 19px;
+		font-size: 20px;
 		vertical-align: middle;
 		text-align: center;
-	}
-
-	b {
-		color: #000000;
-	}
-
-	​address {
-		font-size: 17px;
 	}
 
 	.icon {
 		vertical-align: baseline;
 	}
 
+
+	.amount-row {
+		width: 22px;
+	}
+
+	tr,
+	td,
+	th {
+		border: solid #48494B;
+		border-width: 0.01em 0 0.01em 0;
+	}
+
+	.borderless {
+		border: solid #FFF;
+	}
+
+
 	@media print {
-		.first-row {
-			padding: -1em;
+		body {
+			margin-top: -10mm;
 		}
+
+		/* set div to stay at the bottom of page */
+		.divFooter {
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			padding-left: 26px;
+			padding-right: 4px;
+		}
+
+		.print-invoice,
+		#back-to-top {
+			display: none !important;
+		}
+
 	}
 </style>
 @endsection
-<!-- <tr>
-	<td class="text-center">2</td>
-	<td>
-		<p class="font-w600 align-bot">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-	</td>
-	<td class="text-end">2,000.00</td>
-</tr> -->
 @section('content')
-
-<!-- PAGE-HEADER -->
-
-<!-- <div class="page-header">
-	<div>
-		<h1 class="page-title">ใบแจ้งหนี้/ใบวางบิล <br>ตันฉบับ</h1>
-	</div> -->
-<!-- <div class="ms-auto pageheader-btn">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item">Apps</li>
-				<li class="breadcrumb-item"><a href="javascript:void(0);">Invoices</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Invoice Details</li>
-			</ol>
-		</div> -->
-<!-- </div> -->
-<!-- PAGE-HEADER END -->
-
 <!-- ROW-1 OPEN -->
 <div class="row first-row">
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-sm-6">
-						<div style="padding-top:56px;"></div>
-						<img src="{{asset('assets/images/brand/waslogo-3.png')}}" style="height:60px;">
+					<div class="col-sm-7">
+						<div style="padding-top:32px;"></div>
+						<img src="{{asset('assets/images/brand/logo-3.png')}}" style="height:100px;">
 						<address>
 							<p>
-								<b>บริษัท แลนด์มาร์ค คอลซัลแทนทส์ จำกัด </b> <br>
-								370/6 อาคารแฟร์ทาวเวอร์ ซอยสุขุมวิท 50 ถนนสุขุมวิท<br>
+								<b style="font-size:21px;">บริษัท แลนด์มาร์ค คอลซัลแทนส์ จำกัด </b> <br>
+								370/6 อาคารแฟร์ ทาวน์เวอร์ ชั้น 2 ซอยสุขุมวิท 50 ถนนสุขุมวิท<br>
 								แขวงพระโขนง เขตคลองเตย กรุงเทพมหานคร 10260 <br>
-								เลขประจำตัวผู้เสียภาษี 015547070351 สำนักงานใหญ่
+								เลขประจำตัวผู้เสียภาษี 0105547070351 (สำนักงานใหญ่)
 							</p>
 						</address>
 						<address>
 							<p class="pt-4 pb-4">
-								<b>ลูกค้า</b> <br>
+								<b style="font-size:21px;">ลูกค้า</b> <br>
 								นายธนกฤต อนันต์ประกฤติ<br>
 								469 ซอยสำโรงเหนือ ตำบลสำโรงเหนือ อำเภอเมืองสมุทรปราการ จ.สมุทรปราการ
 							</p>
 						</address>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-5">
 						<div class="clearfix">
-							<div class="float-end me-7">
-								<h1 class="page-title text-center mt-5"><b>ใบแจ้งหนี้/ใบวางบิล <br>ตันฉบับ</b></h1>
+							<div class="float-end ps-5" style="width: 440px;">
+								<h1 class="page-title text-center mt-5"><b>ใบแจ้งหนี้/ใบวางบิล</b></h1>
+								<h2 class="text-center"><b>ตันฉบับ</b></h2>
 								<hr>
 								<div class="text-start">
-									<p style="line-height:29px;">Invoice No. : LC-R-20/09/104<br>
+									<p style="line-height:29px !important;">Invoice No. : <b>LC-R-20/09/104</b><br>
 										Date: 21-10-2021<br>
-										<i class="icon icon-phone pe-2"></i><label></label>0-2331-4580-2</label><br>
-										<i class="icon icon-globe pe-2"></i><label>www.landmarkcon.net</label>
+										<i class="icon icon-globe pe-2"></i><label>www.landmarkcon.net</label><br>
+										<i class="icon icon-phone pe-2" style="margin-top:-10px"></i><label>0-2331-4580-2</label><br>
+
 									</p>
+									<div style="padding-top:25px;">
+										<img height="98px" src="https://qrcg-free-editor.qr-code-generator.com/main/assets/images/websiteQRCode_noFrame.png" style="float: left; margin-left: -8px;" />
+										<p class="pt-2">
+											บริษัท แลนด์มาร์ค คอลซัลแทนส์ จำกัด<br>
+											ธนาคารกสิกรไทย กระแสรายวัน<br>
+											เลขที่ 044-2926-727 สาขาบิ๊กซี อ่อนนุช
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="table-responsive push">
-					<table class="table table-borderless table-hover mb-0 text-nowrap border-bottom">
+
+				<div class="table-responsive push mt-5">
+					<table class="table table-hover mb-0 text-nowrap">
 						<tbody>
 							<tr class="tableheader">
 								<th>#</th>
 								<th>Description</th>
-								<th>Amount<br>(Baht)</th>
+								<th class="amount-row">Amount<br>(Baht)</th>
 							</tr>
-							<tr>
-								<td class="text-center align-top">1</td>
-								<td>
-									<p class="font-w600" style="align-items: center; vertical-align: middle;">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">2</td>
+
+							<!-- max 7 rows -->
+							@for ($i=0; $i < 0; $i++) <tr>
+								<td class="text-center align-top">{{$i}}</td>
 								<td>
 									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
 								</td>
 								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">3</td>
-								<td>
-									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">4</td>
-								<td>
-									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">5</td>
-								<td>
-									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">6</td>
-								<td>
-									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td class="text-center align-top">7</td>
-								<td>
-									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-								</td>
-								<td class="text-end">2,000.00</td>
-							</tr>
-							<tr>
-								<td colspan="2" class="fw-bold text-uppercase text-end">Subtotal</ td>
-								<td class="fw-bold text-end">11,160.00</td>
-							</tr>
-							<tr>
-								<td colspan="2" class="fw-bold text-uppercase text-end">VAT 7%</ td>
-								<td class="fw-bold text-end">1,856,160.00</td>
-							</tr>
-							<tr>
-								<td colspan="2" class="fw-bold text-uppercase text-end">Total</ td>
-								<td class="fw-bold text-end">1,203,450.00</td>
-							</tr>
-							<tr>
-								<td colspan="3" class="fw-bold text-uppercase text-end">( สามพันเจ็ดร้อยสี่สิบห้าบาทถ้วน )</ td>
-							</tr>
+								</tr>
+								@endfor
 						</tbody>
 					</table>
 				</div>
 
-			</div>
-			<!-- <div class="card-footer text-end">
-				<div class="float-end">
-					<i class="icon icon-phone"> </i><a class="pe-2">0-2331-4580-2</a>
-					<i class="icon icon-globe pe-2"></i><a class="pe-1">www.landmarkcon.net</a>
+				<div class="row pt-1">
+					<div class="col-sm-12">
+						<div class="table-responsive push">
+							<table class="table table-borderless table-hover mb-0 text-nowrap border-bottom">
+								<tbody>
+									<tr class="borderless">
+										<td colspan="5" class="fw-bold text-end" width="90%">Subtotal</td>
+										<td class="fw-bold text-end" width="10%">11,160.00</td>
+									</tr>
+									<tr class="borderless">
+										<td colspan="5" class="fw-bold text-end">VAT 7%</td>
+										<td class="fw-bold text-end">1,856,160.00</td>
+									</tr>
+									<tr>
+										<td colspan="4" class="fw-bold text-center" style="font-size:21px;">( สามพันเจ็ดร้อยสี่สิบห้าบาทถ้วน )</td>
+										<td colspan="1" class="fw-bold text-end" width="10%">Total</td>
+										<td class="fw-bold text-end">1,203,450.00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+
 				</div>
-			</div> -->
+
+				<div class="row pt-1 divFooter">
+					<div class="col-sm-12">
+						<div class="table-responsive push">
+							<table class="table table-borderless table-hover mb-0 text-nowrap border-bottom">
+								<tbody>
+									<tr class="text-center borderless">
+										<td colspan="3" class="align-bottom"><label class="me-6 align-bottom" style="border-top: 1px solid black; width: 238px; text-align: center; padding-top: 5px;">ผู้รับวางบิล</label>
+											<label class="ms-6 align-bottom" style="border-top: 1px solid black; width: 158px; text-align: center; padding-top: 5px;">วันที่</label>
+										</td>
+										<td colspan="3" style="background-color:antiquewhite;">
+											<label style="padding-bottom: 114px;">บริษัท แลนด์มาร์ค คอลซัลแทนส์ จำกัด</label><br>
+											<label style="border-top: 1px solid black; width: 274px; text-align: center; padding-top: 5px;">แผนกบัญชี</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
 		</div>
 	</div><!-- COL-END -->
 </div>
 <!-- ROW-1 CLOSED -->
-<div class="float-end">
-	<button type="button" class="btn btn-primary mb-1" onclick="javascript:window.print();"><i class="si si-wallet"></i> Pay Invoice</button>
-	<button type="button" class="btn btn-success mb-1" onclick="javascript:window.print();"><i class="si si-paper-plane"></i> Send Invoice</button>
+<div class="float-end print-invoice">
 	<button type="button" class="btn btn-info mb-1" onclick="javascript:window.print();"><i class="si si-printer"></i> Print Invoice</button>
 </div>
 
