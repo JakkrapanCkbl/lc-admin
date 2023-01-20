@@ -64,6 +64,7 @@ use App\Http\Livewire\Index;
 use App\Http\Livewire\InvoiceCreate;
 use App\Http\Livewire\InvoiceDetails;
 use App\Http\Livewire\ReceiptDetails; //added
+use App\Http\Livewire\OrderDetails; //added
 use App\Http\Livewire\InvoiceEdit;
 use App\Http\Livewire\InvoiceList;
 use App\Http\Livewire\InvoiceTimelog;
@@ -219,6 +220,7 @@ Route::get('index', Index::class);
 Route::get('invoice-create', InvoiceCreate::class);
 Route::get('invoice-details', InvoiceDetails::class);
 Route::get('receipt-details', ReceiptDetails::class); //added
+Route::get('order-details', OrderDetails::class); //added
 Route::get('invoice-edit', InvoiceEdit::class);
 Route::get('invoice-list', InvoiceList::class);
 Route::get('invoice-timelog', InvoiceTimelog::class);
