@@ -48,11 +48,13 @@
     tr,
     th {
         border: solid #98999A;
-        border-width: 0.01em 0 0.01em 0;
+        border-width: 0.007em 0 0.007em 0;
     }
 
+    /* First paragraph */
+
     .table-stripe tbody tr:nth-of-type(odd) {
-        background-color: #D6D6D6;
+        background-color: aliceblue;
     }
 
     @media print {
@@ -61,12 +63,12 @@
             margin-top: -10mm;
         }
 
-        .table-stripe tbody tr:nth-of-type(even) {
-            background-color: cyan;
+        .table .table-stripe tbody tr:nth-of-type(even) {
+            background-color: cyan !important;
         }
 
         /* .table-stripe tbody tr:nth-of-type(even) {
-            background-color: #D6D6D6;
+            background-color: black;
         } */
 
         .print-invoice,
@@ -83,50 +85,37 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <!-- <div class="row"></div>
-                    <div class="col-sm-2">
-                        <img src="{{asset('assets/images/brand/logo-3.png')}}" style="height:100px;">
-                    </div>
-                    <div class="col-sm-10">
-                        <h1 class="page-title text-center align-bottom mt-7"><b>Order For Service</b></h1>
-                    </div>
-                    <div class="row" style="margin-bottom:-40px;">
-                        <div class="col-sm-7 ps-4">
-                            <p class="ps-10" style="padding-top:64px; padding-left:50px;">วันที่ออกใบสั่งงาน: 10 มค.65</p>
-                        </div>
-                        <div class="col">
-                            <img src="{{asset('assets/images/users/obama.jpg')}}" style="height:60px; float:left; padding-right:10px;">
-                            <p class="text-start" style="padding-left:62px;">
-                                <b style="font-size:24px;">วันที่นัดสำรวจ: 10 มค. 65</b><br>
-                                ระยะเวลาทำงาน: 3 วัน<br>
-                                กำหนดครั้งทำงาน LC: 10 มค. 65
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
-                <h1 class="page-title text-center" style="text-align:bottom; background-color:red;"><b>Order For Service</b></h1>
-
                 <div class="row">
-                    <div class="col-sm-5">
-                        <img src="{{asset('assets/images/brand/logo-3.png')}}" style="height:100px; padding-left:10px;">
-                        <p style="padding-left:22px;">วันที่ออกใบสั่งงาน: 10 มค.65</p>
+                    <div class="col-sm-4">
                     </div>
-                    <div class="col-sm-7" style="padding-top:60px; padding-right:36px;">
-                        <img src="{{asset('assets/images/users/obama.jpg')}}" style="height:60px; padding-right:10px;">
-                        <p class="text-end" style="padding-left:62px;">
-                            <b style="font-size:24px;">วันที่นัดสำรวจ: 10 มค. 65</b><br>
-                            กำหนดส่งงาน LC : <label style="padding-left:24px;">13 มค. 65</label><br>
-                            ระยะเวลาทำงาน: 3 วัน
-                        </p>
+                    <div class="col-sm-4">
+                        <h1 class="page-title text-center" style="text-align:bottom;"><b>Order For Service</b></h1>
+                    </div>
+                    <div class="col-sm-4">
                     </div>
                 </div>
+                <div class="row px-5">
+                    <div class="col-sm-6">
+                        <img src="{{asset('assets/images/brand/logo-3.png')}}" style="height:100px;">
+                        <p style="position: absolute; bottom:0;">วันที่ออกใบสั่งงาน : 10 มค. 65</p>
+                    </div>
+                    <div class="col-sm-6 mt-7">
+                            <img src="{{asset('assets/images/users/obama.jpg')}}" style="max-height:100px; max-width:100px; padding:0 0 10px 10px; float:right;">
+                            <p class="text-end" style="padding-left:62px;">
+                                <b style="font-size:22px;">วันที่นัดสำรวจ : 10 มค. 65 10:00</b><br>
+                                กำหนดส่งงาน LC : <span style="padding-left:26px;">13 มค. 65</span><br>
+                                ระยะเวลาทำงาน : <span style="padding-left:70px;">3 วัน</span>
+                            </p>
+                    </div>
+                </div>
+
             </div>
-            <div class="table-responsive push mt-5 px-7">
+            <div class="table-responsive push px-5 mt-1">
                 <table class="table table-stripe text-nowrap">
                     <tbody style="margin-left:100px;">
                         <tr>
-                            <td width="25%" style="background-color: red;">รายงานเลขที่</td>
-                            <td width="3%" style="background-color: blue;">:</td>
+                            <td width="25%">รายงานเลขที่</td>
+                            <td width="3%">:</td>
                             <td>LC-R-20/09/104</td>
                         </tr>
                         <tr>
@@ -158,22 +147,22 @@
                             <td colspan="3">4. รายละเอียดในรายงาน</td>
                         </tr>
                         <tr>
-                            <td class="ps-6"> - ชื่อ</td>
+                            <td class="ps-8"> - ชื่อ</td>
                             <td>:</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td class="ps-6"> - ที่อยู่</td>
+                            <td class="ps-8"> - ที่อยู่</td>
                             <td>:</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td class="ps-6"> - เรียน</td>
+                            <td class="ps-8"> - เรียน</td>
                             <td>:</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td class="ps-6"> - ตำแหน่ง</td>
+                            <td class="ps-8"> - ตำแหน่ง</td>
                             <td>:</td>
                             <td></td>
                         </tr>
@@ -215,36 +204,6 @@
                             <td>:</td>
                             <td></td>
                         </tr>
-                        <tr>
-                            <td>9. Timing</td>
-                            <td>:</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="ps-6"> - ระยะเวลาทำงาน</td>
-                            <td>:</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="ps-6"> - วันที่ส่งงานลูกค้า</td>
-                            <td>:</td>
-                            <td></td>
-                        </tr>
-
-
-                        <!-- <tr class="tableheader">
-                            <th>#</th>
-                            <th>Description</th>
-                            <th class="amount-row">Amount<br>(Baht)</th>
-                        </tr>
-
-                        <tr>
-                            <td class="text-center align-top"></td>
-                            <td>
-                                <p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
-                            </td>
-                            <td class="text-end">2,000.00</td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>

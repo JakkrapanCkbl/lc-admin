@@ -65,6 +65,8 @@ use App\Http\Livewire\InvoiceCreate;
 use App\Http\Livewire\InvoiceDetails;
 use App\Http\Livewire\ReceiptDetails; //added
 use App\Http\Livewire\OrderDetails; //added
+use App\Http\Livewire\NhlsDetails; //added
+use App\Http\Livewire\HlsDetails; //added
 use App\Http\Livewire\InvoiceEdit;
 use App\Http\Livewire\InvoiceList;
 use App\Http\Livewire\InvoiceTimelog;
@@ -130,7 +132,6 @@ use App\Http\Livewire\Wysiwyag;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BlogController; //Blog to BlogController
-use Illuminate\Contracts\View\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -221,6 +222,8 @@ Route::get('invoice-create', InvoiceCreate::class);
 Route::get('invoice-details', InvoiceDetails::class);
 Route::get('receipt-details', ReceiptDetails::class); //added
 Route::get('order-details', OrderDetails::class); //added
+Route::get('nhls-details', NhlsDetails::class); //added
+Route::get('hls-details', HlsDetails::class); //added
 Route::get('invoice-edit', InvoiceEdit::class);
 Route::get('invoice-list', InvoiceList::class);
 Route::get('invoice-timelog', InvoiceTimelog::class);

@@ -747,7 +747,7 @@ pre code {
   .text-wrap table td,
   .table th,
   .text-wrap table th {
-    background-color: #fff !important;
+    background-color: #fff; /*remove !important for colored table in orderdetails, invoicedetails, etc.*/
   }
 
   .table-bordered th,
