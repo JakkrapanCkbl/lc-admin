@@ -72,7 +72,8 @@
 
         body {
             margin-top: -10mm;
-            padding-left: 10mm; /*~38px*/
+            padding-left: 10mm;
+            /*~38px*/
         }
 
         .table .table-stripe tbody tr:nth-of-type(even) {
@@ -169,7 +170,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>1. ค่าเดินทาง</td>
+                                <td>1. ค่าเดินทางตามโซน</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -193,7 +194,13 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>5. อื่น ๆ</td>
+                                <td>5. ค่าเดินทางเช็คโฉนด</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>6. อื่น ๆ</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -204,14 +211,8 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr class="tableheader">
-                                <td>หัก-เงินเบิกล่วงหน้า</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="tableheader">
-                                <th>คงเหลือ</th>
+                            <tr>
+                                <td>หมายเหตุ</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

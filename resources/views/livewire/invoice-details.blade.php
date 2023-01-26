@@ -143,7 +143,7 @@
 							</tr>
 
 							<!-- max 7 rows -->
-							@for ($i=0; $i < 0; $i++) <tr>
+							@for ($i=0; $i < 7; $i++) <tr>
 								<td class="text-center align-top">{{$i}}</td>
 								<td>
 									<p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>

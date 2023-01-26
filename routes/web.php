@@ -67,6 +67,7 @@ use App\Http\Livewire\ReceiptDetails; //added
 use App\Http\Livewire\OrderDetails; //added
 use App\Http\Livewire\NhlsDetails; //added
 use App\Http\Livewire\HlsDetails; //added
+use App\Http\Livewire\QuotationDetails; //added
 use App\Http\Livewire\InvoiceEdit;
 use App\Http\Livewire\InvoiceList;
 use App\Http\Livewire\InvoiceTimelog;
@@ -224,6 +225,7 @@ Route::get('receipt-details', ReceiptDetails::class); //added
 Route::get('order-details', OrderDetails::class); //added
 Route::get('nhls-details', NhlsDetails::class); //added
 Route::get('hls-details', HlsDetails::class); //added
+Route::get('quotation-details', QuotationDetails::class); //added
 Route::get('invoice-edit', InvoiceEdit::class);
 Route::get('invoice-list', InvoiceList::class);
 Route::get('invoice-timelog', InvoiceTimelog::class);
