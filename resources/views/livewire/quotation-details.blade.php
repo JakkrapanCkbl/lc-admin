@@ -52,6 +52,11 @@
         vertical-align: baseline;
     }
 
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
     tr,
     td,
     th {
@@ -100,6 +105,10 @@
         width: 216px;
         margin-bottom: -4px;
         margin-left: 4px;
+    }
+
+    .quotation-table tbody tr td{
+        white-space: pre-wrap;
     }
 
     @media print {
@@ -172,21 +181,40 @@
                 </div>
 
                 <div class="table-responsive push mt-5">
-                    <table class="table table-hover mb-0 text-nowrap">
+                    <table class="table table-hover mb-0 text-nowrap quotation-table">
                         <tbody>
                             <tr class="tableheader">
-                                <th>#</th>
-                                <th>Description</th>
-                                <th class="amount-row">Amount<br>(Baht)</th>
+                                <th width="6%">ลำดับ</th>
+                                <th width="6%">ประเภททรัพย์สิน</th>
+                                <th width="6%">ทำเลที่ตั้ง</th>
+                                <th width="6%">วิธีการประเมิน</th>
+                                <!-- <th width="6%" class="amount-row">ระยะเวลา<br>(วันทำงาน)</th>
+                             -->
+                                <th width="6%">ระยะเวลา<br>(วันทำงาน)</th>
+                                <th width="6%">ค่าบริการ<br>(บาท)</th>
                             </tr>
 
                             <!-- max 6 rows -->
-                            @for ($i=0; $i < 6; $i++) <tr>
-                                <td class="text-center align-top">{{$i}}</td>
-                                <td>
-                                    <p class="font-w600">ค่าบริการประเมินมูลค่าทรัพย์สิน LC/BF-1328 HLHO63900629</p>
+                            @for ($i=0; $i < 3; $i++) <tr>
+                                <td class="text-center align-top">
+                                    {{$i}}
                                 </td>
-                                <td class="text-end">2,000.00</td>
+                                <td>
+                                    ห้องชุดพักอาศัย Kave Town จำนวน 520 ยูนิต เนื้อที่รวม 5,123 ตารางเมตร
+                                </td>
+                                <td>
+                                    ถนนพหลโยธิน ตำบลคลองหนึ่ง เขตคลองหลวง จัหวัดปทุมธานี
+                                </td>
+                                <td>
+                                    - วิธีเปรียบเทียบกับข้อมูลตลาด (The Market Approach)
+                                    - วิธีคำนวนจากมูลค่าคงเหลือ (The Residual Approach)
+                                </td>
+                                <td class="text-end">
+                                    2,000.00
+                                </td>
+                                <td class="text-end">
+                                    2,000.00
+                                </td>
                                 </tr>
                                 @endfor
                         </tbody>
