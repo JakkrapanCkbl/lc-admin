@@ -1,12 +1,11 @@
 <?php
-
+//test commit
 use App\Http\Livewire\About;
 use App\Http\Livewire\Accordion;
 use App\Http\Livewire\Alerts;
 use App\Http\Livewire\Avatar;
 use App\Http\Livewire\Background;
 use App\Http\Livewire\Badge;
-use App\Http\Livewire\Blog;
 use App\Http\Livewire\BlogDetails;
 use App\Http\Livewire\BlogEdit;
 use App\Http\Livewire\Border;
@@ -64,6 +63,11 @@ use App\Http\Livewire\Icons10;
 use App\Http\Livewire\Index;
 use App\Http\Livewire\InvoiceCreate;
 use App\Http\Livewire\InvoiceDetails;
+use App\Http\Livewire\ReceiptDetails; //added
+use App\Http\Livewire\OrderDetails; //added
+use App\Http\Livewire\NhlsDetails; //added
+use App\Http\Livewire\HlsDetails; //added
+use App\Http\Livewire\QuotationDetails; //added
 use App\Http\Livewire\InvoiceEdit;
 use App\Http\Livewire\InvoiceList;
 use App\Http\Livewire\InvoiceTimelog;
@@ -128,6 +132,8 @@ use App\Http\Livewire\Wysiwyag;
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BlogController; //Blog to BlogController
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -143,6 +149,12 @@ Route::get('/', function () {
     return view('livewire.landing'); //start at landing page
 });
 
+Route::get('/invoice', function () {
+    return view('invoice');
+});
+Route::get('/invoice-old', function () {
+    return view('invoice-old');
+});
 Route::get('about', About::class);
 Route::get('accordion', Accordion::class);
 Route::get('alerts', Alerts::class);
@@ -151,7 +163,9 @@ Route::get('background', Background::class);
 Route::get('badge', Badge::class);
 Route::get('blog-details', BlogDetails::class);
 Route::get('blog-edit', BlogEdit::class);
-Route::get('blog', Blog::class);
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blogdata/{tag}', [BlogController::class, 'blogquery']);
+
 Route::get('border', Border::class);
 Route::get('breadcrumbs', Breadcrumbs::class);
 Route::get('buttons', Buttons::class);
@@ -207,6 +221,11 @@ Route::get('icons10', Icons10::class);
 Route::get('index', Index::class);
 Route::get('invoice-create', InvoiceCreate::class);
 Route::get('invoice-details', InvoiceDetails::class);
+Route::get('receipt-details', ReceiptDetails::class); //added
+Route::get('order-details', OrderDetails::class); //added
+Route::get('nhls-details', NhlsDetails::class); //added
+Route::get('hls-details', HlsDetails::class); //added
+Route::get('quotation-details', QuotationDetails::class); //added
 Route::get('invoice-edit', InvoiceEdit::class);
 Route::get('invoice-list', InvoiceList::class);
 Route::get('invoice-timelog', InvoiceTimelog::class);
